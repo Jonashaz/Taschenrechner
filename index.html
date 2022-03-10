@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taschenrechner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.webmanifest">
+<script>
+    function rechenablauf(operation){
+        document.getElementById("Antwort").innerHTML +=operation;
+    }
+    function Lösungsmenge(){
+        let leerstellen = document.getElementById('Antwort');
+        let Ergebnis = eval(leerstellen.innerHTML); //ausrechnen
+        leerstellen.innerHTML = Ergebnis;
+
+    }
+    function löschen(){
+        let leerstellen = document.getElementById('Antwort');
+        if(leerstellen.innerHTML.endsWith(' ')){
+            leerstellen.innerHTML = leerstellen.innerHTML.slice(0, -3)
+        } else{
+            leerstellen.innerHTML = leerstellen.innerHTML.slice(0, -1)
+        }
+    }
+    function alleslöschen(){
+        let leerstellen = document.getElementById('Antwort');
+        leerstellen.innerHTML = " ";
+    }
+</script>
+
+   
+
+</head>
+<body>
+    <div id="Antwort"></div>
+    
+    <table>
+        <tr>
+            <td onclick="alleslöschen()">AC</td>
+            <td></td>
+            <td></td>
+            <td onclick="löschen()">DEL</td>
+        </tr>
+        <tr>
+            <td onclick="rechenablauf(1)">1</td>
+            <td onclick="rechenablauf(2)">2</td>
+            <td onclick="rechenablauf(3)">3</td>
+            <td class="zeichen" onclick="rechenablauf(' - ')">-</td>
+        </tr>
+        <tr>
+            <td onclick="rechenablauf(4)">4</td>
+            <td onclick="rechenablauf(5)">5</td>
+            <td onclick="rechenablauf(6)">6</td>
+            <td class="zeichen" onclick="rechenablauf(' / ')">÷</td>
+        </tr>
+        <tr>
+            <td onclick="rechenablauf(7)">7</td>
+            <td onclick="rechenablauf(8)">8</td>
+            <td onclick="rechenablauf(9)">9</td>
+            <td class="zeichen" onclick="rechenablauf(' * ')">x</td>
+        </tr>
+        <tr>
+            <td class="zeichen" onclick="rechenablauf('.')">,</td>
+            <td onclick="rechenablauf(0)">0</td>
+            <td class="zeichen" onclick="rechenablauf(' + ')">+</td>
+            <td onclick="Lösungsmenge()" id="lösen">=</td>
+        </tr>
+    </table>
+</body>
+</html>
